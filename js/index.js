@@ -4,9 +4,14 @@ const searchButton = () => {
 
     inputField.value = '';
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=3b0c6ec58dc6c407c6178f5c636ed3e1`)
-        .then(res => res.json())
-        .then(data => weatherWatch(data))
+    if (inputText == '') {
+        alert('Please enter a city');
+    }
+    else {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputText}&appid=3b0c6ec58dc6c407c6178f5c636ed3e1`)
+            .then(res => res.json())
+            .then(data => weatherWatch(data))
+    }
 }
 const weatherWatch = data => {
     console.log(data);
